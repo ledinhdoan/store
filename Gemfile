@@ -19,6 +19,7 @@ gem "config"
 gem "cancancan"
 gem "bootstrap-sass"
 gem "font-awesome-rails"
+gem 'sqlite3'
 
 group :development, :test do
   gem "byebug", platform: :mri
