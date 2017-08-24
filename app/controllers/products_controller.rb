@@ -4,9 +4,6 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
-  def create
-    
-  end
 
   private
   def load_product
