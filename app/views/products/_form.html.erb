@@ -1,5 +1,9 @@
 <%= form_for @product, remote: true do |f| %>
-  <%= f.label "abc" %><br>
-  <%= f.text_field :name, placeholder: "nhap ten", maxlength: 100 %><br/>
+  <%= f.label "Tao san pham" %><br>
+  <%= f.text_field :name, placeholder: "nhap ten", maxlength: 100, class: "form-control" %><br/>
+
+  <%= f.text_area :details, placeholder: "noi dung", maxlength: 100, class: "form-control" %><br/>
+  <%= f.number_field :cost, placeholder: 100, class: "form-control"%><br/>
+  <%= f.file_field :image, id: "file-upload"%>
   <%= f.submit "Save" %>
 <% end %>

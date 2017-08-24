@@ -1,0 +1,23 @@
+<% if user_signed_in? %>
+  <div class="btn btn-default">
+    <%= link_to "new product", new_product_path %>
+  </div>
+  <div class="btn btn-default text-right">
+    <%= link_to "log_out", destroy_user_session_path, method: :delete %>
+  </div>
+<% end %>
+<div>
+  <% @products.each do |product| %>
+    <div class="col-md-3">
+      <%= link_to image_tag(product.image, width: 200), product_path(product) %></br>
+      <label class="text-center">
+        <%= link_to "#{product.name}", product_path(product) %>
+      </label></br>
+      <% if user_signed_in? %>
+        <%= link_to "edit", edit_product_path(product), class: "btn btn-default" %>
+        <%= link_to "delete", product_path(product), method: :delete, data: {confirm: "sure?"},
+          class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
