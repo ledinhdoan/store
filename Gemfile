@@ -13,6 +13,8 @@ gem "bootstrap-filestyle-rails"
 gem "bootstrap-datepicker-rails"
 gem "whenever", require: false
 gem "kaminari"
+gem "carrierwave"
+gem "mini_magick"
 gem "jquery-rails"
 gem "devise"
 gem "config"
