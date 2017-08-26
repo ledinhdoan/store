@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
+//= require bootstrap-sprockets
+//= require main
+//= require jquery.flexslider
+//= require modernizr
+//= require waypoints.min
+//= require owl.carousel.min
+//= require front

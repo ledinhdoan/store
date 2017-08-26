@@ -1,4 +1,3 @@
-<%= @product.name %>
 <div id="all">
   <div id="content">
     <div class="container">
@@ -130,7 +129,8 @@
         <div class="row" id="productMain">
           <div class="col-sm-6">
             <div id="mainImage">
-              <img src="img/detailbig1.jpg" alt="" class="img-responsive">
+              <!-- <img src="img/detailbig1.jpg" alt="" class="img-responsive"> -->
+              <%= image_tag @product.image, class: "img-responsive" %>
             </div>
             <div class="ribbon sale">
               <div class="theribbon">SALE</div>
