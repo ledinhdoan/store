@@ -2,6 +2,13 @@ class CreateProducts < ActiveRecord::Migration[5.0]
   def change
     create_table :products do |t|
       t.string :name
+      t.string :trademark
+      t.string :nong_do
+      t.string :time_save
+      t.string :toa_huong
+      t.string :thoi_diem_dung
+      t.string :mui_dac_trung
+      t.string :style
       t.string :image
       t.string :details
       t.float :cost
