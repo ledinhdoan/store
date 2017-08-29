@@ -20,173 +20,53 @@
     </div>
   </div>
 </div>
+<div id="advantages">
+  <div class="container">
+    <div class="same-height-row">
+      <div class="col-sm-3">
+        <div class="box same-height">
+          <div class="icon"><i class="fa fa-heart"></i>
+          </div>
+          <h3 class="color-title">Cam kết</h3>
+          <p>Giấy phép lưu hành, chất lượng sản phẩm được Bộ Y Tế kiểm định.</p>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="box same-height">
+          <div class="icon"><i class="fa fa-thumbs-up"></i>
+          </div>
+          <h3 class="color-title">Cam kết</h3>
+          <p>Tem chống hàng giả của bộ Công An.                                   </p>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="box same-height">
+          <div class="icon"><i class="fa fa-heart"></i>
+          </div>
+          <h3 class="color-title">Cam kết</h3>
+          <p>Hương liệu cao cấp nhập khẩu chính ngạch từ Châu Âu￼.</p>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="box same-height">
+          <div class="icon"><i class="fa fa-thumbs-up"></i>
+          </div>
+          <h3 class="color-title">Cam kết</h3>
+          <p>Mùi hương chuẩn như các nơi nổi tiếng trên thế giới.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div id="all">
   <div id="content">
-    <div class="container">
-      <div class="col-md-12">
-        <div id="main-slider">
-          <div class="item">
-            <%= image_tag "Adore.png", class: "img-responsive" %>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="advantages">
-      <div class="container">
-        <div class="same-height-row">
-          <div class="col-sm-3">
-            <div class="box same-height clickable">
-              <div class="icon"><i class="fa fa-heart"></i>
-              </div>
-              <h3 class="color-title">Cam kết</h3>
-              <p>Giấy phép lưu hành, chất lượng sản phẩm được Bộ Y Tế kiểm định.</p>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="box same-height clickable">
-              <div class="icon"><i class="fa fa-thumbs-up"></i>
-              </div>
-              <h3 class="color-title">Cam kết</h3>
-              <p>Tem chống hàng giả của bộ Công An.                                   </p>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="box same-height clickable">
-              <div class="icon"><i class="fa fa-heart"></i>
-              </div>
-              <h3 class="color-title">Cam kết</h3>
-              <p>Hương liệu cao cấp nhập khẩu chính ngạch từ Châu Âu￼.</p>
-            </div>
-          </div>
-          <div class="col-sm-3">
-            <div class="box same-height clickable">
-              <div class="icon"><i class="fa fa-thumbs-up"></i>
-              </div>
-              <h3 class="color-title">Cam kết</h3>
-              <p>Mùi hương chuẩn như các nơi nổi tiếng trên thế giới.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="hot">
-      <div class="box">
-        <div class="container">
-          <div class="col-md-12">
-            <h2>Hàng mới trong tuần</h2>
-            <% if user_signed_in? %>
-              <div class="btn btn-default">
-                <%= link_to "new product", new_product_path %>
-              </div>
-              <div class="btn btn-default text-right">
-                <%= link_to "log_out", destroy_user_session_path, method: :delete %>
-              </div>
-            <% end %>
-            <div class="container">
-              <div class="product-slider">
-                <% Product.all.each do |product| %>
-                  <%= link_to product_path(product) do %>
-                    <div class="item">
-                    <div class="product">
-                      <div class="flip-container">
-                        <div class="flipper">
-                          <div class="front">
-                            <%= image_tag product.image, class: "img-responsive" %>
-                          </div>
-                          <div class="back">
-                            <%= image_tag product.image, class: "img-responsive" %>
-                          </div>
-                        </div>
-                      </div>
-                        <%= image_tag product.image, class: "img-responsive" %>
-                      <div class="text">
-                        <h3><%= product.name %></h3>
-                        <p class="price"><%= product.cost %>đ</p>
-                        <p class="text-center"><button>Xem thông tin</button></p>
-                      </div>
-                      <div class="ribbon new">
-                        <div class="theribbon">NEW</div>
-                        <div class="ribbon-background"></div>
-                      </div>
-                    </div>
-                    <% if user_signed_in? %>
-                      <%= link_to "edit", edit_product_path(product), class: "btn btn-default" %>
-                      <%= link_to "delete", product_path(product), method: :delete, data: {confirm: "sure?"},
-                        class: "btn btn-danger" %>
-                    <% end %>
-                  <% end %>
-                </div>
-                <% end %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <%= yield %>
-    <div class="container" data-animate="fadeInUpBig">
-      <div class="col-md-12">
-        <div class="box slideshow">
-          <h3>Get Inspired</h3>
-          <p class="lead">Get the inspiration from our world class designers</p>
-          <div id="get-inspired" class="owl-carousel owl-theme">
-            <div class="item">
-              <a href="#">
-                <%= image_tag "yasuo.jpg", class: "img-responsive" %>
-              </a>
-            </div>
-            <div class="item">
-              <a href="#">
-                <%= image_tag "yasuo.jpg", class: "img-responsive" %>
-              </a>
-            </div>
-            <div class="item">
-              <a href="#">
-                <%= image_tag "yasuo.jpg", class: "img-responsive" %>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="box text-center" data-animate="fadeInUp">
       <div class="container">
         <div class="col-md-12">
           <h3 class="text-uppercase">From our blog</h3>
           <p class="lead">What's new in the world of fashion? <a href="blog.html">Check our blog!</a>
           </p>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <div class="col-md-12" data-animate="fadeInUp">
-        <div id="blog-homepage" class="row">
-          <div class="col-sm-6">
-            <div class="post">
-              <h4><a href="post.html">Fashion now</a></h4>
-              <p class="author-category">By <a href="#">John Slim</a> in <a href="">Fashion and style</a>
-              </p>
-              <hr>
-              <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-                ultricies mi vitae est. Mauris placerat eleifend leo.
-              </p>
-              <p class="read-more"><a href="post.html" class="btn btn-primary">Continue reading</a>
-              </p>
-            </div>
-          </div>
-          <div class="col-sm-6">
-            <div class="post">
-              <h4><a href="post.html">Who is who - example blog post</a></h4>
-              <p class="author-category">By <a href="#">John Slim</a> in <a href="">About Minimal</a>
-              </p>
-              <hr>
-              <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean
-                ultricies mi vitae est. Mauris placerat eleifend leo.
-              </p>
-              <p class="read-more"><a href="post.html" class="btn btn-primary">Continue reading</a>
-              </p>
-            </div>
-          </div>
         </div>
       </div>
     </div>
