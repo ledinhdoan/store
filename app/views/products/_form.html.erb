@@ -6,8 +6,8 @@
   <%= f.select :category_id, options_for_select(Category.all.map{|cate| [cate.name, cate.id]}) %><br/>
   <label><%= t("product.chi_tiet") %></label></br>
   <%= f.text_area :details, placeholder: t("product.chi_tiet"), maxlength: 100, class: "form-control" %><br/>
-  <label><%= t("product.thuong_hieu") %></label></br>
-  <%= f.text_area :trademark, placeholder: t("product.thuong_hieu"), maxlength: 100, class: "form-control" %><br/>
+  <label><%= t("product.the_tich") %></label></br>
+  <%= f.text_area :the_tich, placeholder: t("product.the_tich"), maxlength: 100, class: "form-control" %><br/>
   <label><%= t("product.nong_do") %></label></br>
   <%= f.text_area :nong_do, placeholder: t("product.nong_do"), maxlength: 100, class: "form-control" %><br/>
   <label><%= t("product.do_luu_huong") %></label></br>
@@ -17,9 +17,11 @@
   <label><%= t("product.thoi_diem") %></label></br>
   <%= f.text_area :thoi_diem_dung, placeholder: t("product.thoi_diem"), maxlength: 100, class: "form-control" %><br/>
   <label><%= t("product.mui_dac_trung") %></label></br>
-  <%= f.text_area :mui_dac_trung, placeholder: t("product.mui_dac_trung"), maxlength: 100, class: "form-control" %><br/>
+  <%= f.text_area :mui_dac_trung, placeholder: t("product.mui_dac_trung"), maxlength: 300, class: "form-control" %><br/>
   <label><%= t("product.phong_cach") %></label></br>
   <%= f.text_area :style, placeholder: t("product.phong_cach"), maxlength: 100, class: "form-control" %><br/>
+  <label><%= t("product.nhom_huong") %></label></br>
+  <%= f.text_area :nhom_huong, placeholder: t("product.nhom_huong"), maxlength: 100, class: "form-control" %><br/>
   <label><%= t("product.gia") %></label></br>
   <%= f.number_field :cost, placeholder: 100, class: "form-control"%><br/>
   <label><%= t("product.hinh_anh") %></label></br>

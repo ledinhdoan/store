@@ -2,7 +2,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
   def change
     create_table :products do |t|
       t.string :name
-      t.string :trademark
+      t.string :the_tich
       t.string :nong_do
       t.string :time_save
       t.string :toa_huong
@@ -11,6 +11,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.string :style
       t.string :image
       t.string :details
+      t.string :nhom_huong
       t.float :cost
       t.integer :category_id
       t.references :user, index: true, foreign_key: true
