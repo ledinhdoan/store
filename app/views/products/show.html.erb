@@ -1,6 +1,74 @@
 <div id="all">
   <div id="content">
     <div class="container">
+      <div class="col-md-9">
+        <div class="row" id="productMain">
+          <div class="col-sm-12">
+            <div id="mainImage">
+              <%= image_tag @product.image, class: "img-responsive" %>
+            </div>
+            <div class="ribbon sale">
+              <div class="theribbon">NEW</div>
+              <div class="ribbon-background"></div>
+            </div>
+          </div>
+          <div class="col-sm-12">
+            <div class="box">
+              <h2 class="text-left">Nước hoa <%= @product.name %> <%= @product.the_tich %> ml</h2>
+              <h3><%= @product.cost %>đ</h3>
+              <label>Danh mục: Nước hoa Charme <%= @product.category.name %></label></p>
+              <label>Thể Tích: <%= @product.the_tich %> ml</label></p>
+              <label>Loại: Nước hoa <%= @product.category.name %></label></p>
+              <label>Nồng độ: <%= @product.nong_do %></label></p>
+              <label>Độ lưu hương: <%= @product.time_save %></label></p>
+              <label>Độ tỏa hương: <%= @product.toa_huong %></label></p>
+              <label>Thời điểm khuyên dùng: <%= @product.thoi_diem_dung %></label></p>
+              <label>Mùi hương đặc trưng: <%= @product.mui_dac_trung %></label></p>
+              <label>Phong cách: <%= @product.style %></label></p>
+              <label>Nhóm hương: <%= @product.nhom_huong %></label></p>
+              <p class="text-center buttons">
+                <a href="https://www.facebook.com/NuocHoaCharmeDNA" target="_blank"
+                  class="btn btn-primary"><i class="fa fa-comment"></i>Liên hệ</a>
+                <!-- <a href="basket.html" class="btn btn-default"><i class="fa fa-heart"></i> Add to wishlist</a> -->
+              </p>
+              <% if user_signed_in? %>
+                <%= link_to "edit", edit_product_path(@product), class: "btn btn-default" %>
+                <%= link_to "delete", product_path(@product), method: :delete, data: {confirm: "sure?"},
+                  class: "btn btn-danger" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="box" id="details">
+          <p>
+          <h4>Product details</h4>
+          <p>White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
+          <h4>Material & care</h4>
+          <ul>
+            <li>Polyester</li>
+            <li>Machine wash</li>
+          </ul>
+          <h4>Size & Fit</h4>
+          <ul>
+            <li>Regular fit</li>
+            <li>The model (height 5'8" and chest 33") is wearing a size S</li>
+          </ul>
+          <blockquote>
+            <p><em>Define style this season with Armani's new range of trendy tops, crafted with intricate details. Create a chic statement look by teaming this lace number with skinny jeans and pumps.</em>
+            </p>
+          </blockquote> -->
+          <!-- <hr> -->
+          <!-- <div class="social">
+            <h4>Show it to your friends</h4>
+            <p>
+              <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
+              <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+            </p>
+          </div> -->
+        </div>
+
       <div class="col-md-3">
         <div class="panel panel-default sidebar-menu">
           <div class="panel-heading">
@@ -9,9 +77,9 @@
           <div class="panel-body">
             <ul class="nav nav-pills nav-stacked category-menu">
               <li>
+                <a>Nước hoa charme <%= Category.find(1).name %> <span class="badge pull-right">
+                <%= Category.find(1).products.size() %></span></a>
                 <% Category.find(1).products.each do |product| %>
-                  <a href="category.html">Nước hoa charme <%= Category.find(1).name %> <span class="badge pull-right">
-                    <%= Category.find(1).products.size() %></span></a>
                   <ul>
                     <li><%= link_to product.name ,product_path(product) %>
                     </li>
@@ -19,9 +87,9 @@
                 <% end %>
               </li>
               <li>
+                <a>Nước hoa charme <%= Category.find(2).name %> <span class="badge pull-right">
+                <%= Category.find(2).products.size() %></span></a>
                 <% Category.find(2).products.each do |product| %>
-                  <a href="category.html">Nước hoa charme <%= Category.find(1).name %> <span class="badge pull-right">
-                    <%= Category.find(2).products.size() %></span></a>
                   <ul>
                     <li><%= link_to product.name ,product_path(product) %>
                     </li>
@@ -29,20 +97,6 @@
                 <% end %>
               </li>
             </ul>
-          </div>
-        </div>
-        <div class="panel panel-default sidebar-menu">
-          <div class="panel-heading">
-            <h3 class="panel-title">SẢN PHẨM KHÁC</h3>
-          </div>
-          <div class="box slideshow">
-            <div id="get-inspired" class="owl-carousel owl-theme">
-              <% Product.all.each do |product| %>
-                <div class="item">
-                    <%= link_to image_tag(product.image, class: "img-responsive"), product_path(product) %>
-                </div>
-              <% end %>
-            </div>
           </div>
         </div>
         <div class="panel panel-default sidebar-menu">
@@ -61,67 +115,22 @@
             <% end %>
           </div>
         </div>
+        <div class="panel panel-default sidebar-menu">
+          <div class="panel-heading">
+            <h3 class="panel-title">SẢN PHẨM KHÁC</h3>
+          </div>
+          <div class="box slideshow">
+            <div id="get-inspired" class="owl-carousel owl-theme">
+              <% Product.all.each do |product| %>
+              <div class="item">
+                <%= link_to image_tag(product.image, class: "img-responsive"), product_path(product) %>
+              </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="col-md-9">
-        <div class="row" id="productMain">
-          <div class="col-sm-12">
-            <div id="mainImage">
-              <%= image_tag @product.image, class: "img-responsive" %>
-            </div>
-            <div class="ribbon sale">
-              <div class="theribbon">NEW</div>
-              <div class="ribbon-background"></div>
-            </div>
-          </div>
-          <div class="col-sm-12">
-            <div class="box">
-              <h2 class="text-left">Nước hoa<%= @product.name %> <%= @product.trademark %>ml</h2>
-              <h3><%= @product.cost %>đ</h3>
-              <label>Danh mục:</label></p>
-              <label>Thương hiệu:</label></p>
-              <label>Loại:</label></p>
-              <label>Nồng độ:</label></p>
-              <label>Độ lưu hương:</label></p>
-              <label>Độ tỏa hương:</label></p>
-              <label>Thời điểm khuyên dùng:</label></p>
-              <label>Danh mục:</label></p>
-              <p class="text-center buttons">
-                <a href="basket.html" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                <a href="basket.html" class="btn btn-default"><i class="fa fa-heart"></i> Add to wishlist</a>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="box" id="details">
-          <p>
-          <h4>Product details</h4>
-          <p>White lace top, woven, has a round neck, short sleeves, has knitted lining attached</p>
-          <h4>Material & care</h4>
-          <ul>
-            <li>Polyester</li>
-            <li>Machine wash</li>
-          </ul>
-          <h4>Size & Fit</h4>
-          <ul>
-            <li>Regular fit</li>
-            <li>The model (height 5'8" and chest 33") is wearing a size S</li>
-          </ul>
-          <blockquote>
-            <p><em>Define style this season with Armani's new range of trendy tops, crafted with intricate details. Create a chic statement look by teaming this lace number with skinny jeans and pumps.</em>
-            </p>
-          </blockquote>
-          <hr>
-          <div class="social">
-            <h4>Show it to your friends</h4>
-            <p>
-              <a href="#" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
-              <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
-              <a href="#" class="external twitter" data-animate-hover="pulse"><i class="fa fa-twitter"></i></a>
-              <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
-            </p>
-          </div>
-        </div>
-        <div class="row same-height-row">
+        <!-- <div class="row same-height-row">
           <div class="col-md-3 col-sm-6">
             <div class="box same-height">
               <h3>You may also like these products</h3>
@@ -284,7 +293,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

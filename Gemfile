@@ -22,6 +22,7 @@ gem "cancancan"
 gem "bootstrap-sass"
 gem "font-awesome-rails"
 gem 'sqlite3'
+# gem "impressionist"
 
 group :development, :test do
   gem "byebug", platform: :mri

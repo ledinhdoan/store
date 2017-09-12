@@ -4,7 +4,7 @@
       <h2>Hàng mới trong tuần</h2>
       <div id="get-inspired" class="owl-carousel owl-theme">
         <% Product.all.each do |product| %>
-          <div class="item">
+          <div class="item height-image-index">
               <%= link_to image_tag(product.image, class: "img-responsive"), product_path(product),
                 target: :_blank %>
           </div>
@@ -30,6 +30,7 @@
   </div>
 </div>
 <div class="container">
+  <h3>Tất cả sản phẩm</h3>
   <div class="product-slider">
     <% Product.all.each do |product| %>
       <%= link_to product_path(product) do %>
