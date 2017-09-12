@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_filter :verify_authenticity_token
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :load_product, only: [:show, :edit, :update, :destroy]
+  before_action :load_product, only: [:show, :edit, :update, :destroy, :ascending]
 
   def index
     @products = Product.all
@@ -54,6 +54,6 @@ class ProductsController < ApplicationController
   end
 
   def load_product
-    @product = Product.find params[:id] if params[:id]
+    @product = Product.find_by params[:id] if params[:id]
   end
 end
