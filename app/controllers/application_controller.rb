@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :load_product_all
   before_action :load_categories
+  before_action :ascending
 
   def index
   end
@@ -16,5 +17,9 @@ class ApplicationController < ActionController::Base
 
   def load_categories
     @categories = Category.all
+  end
+
+  def ascending
+    CountView.ascending
   end
 end
