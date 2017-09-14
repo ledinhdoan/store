@@ -15,6 +15,10 @@ development:
   <<: *default
   database: store_development
 
+production:
+  <<: *default
+  database: store_production
+
 test:
   <<: *default
   database: store_test
