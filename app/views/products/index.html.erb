@@ -49,8 +49,10 @@
             <%= image_tag product.image, class: "img-responsive" %>
           <div class="text-center">
             <h4><%= product.name %></h4>
-            <p class="price"><%= product.cost %>đ</p>
-            <p class="text-center"><button>Xem thông tin</button></p>
+            <p class="price">
+              <%= number_with_precision(product.cost, :precision => 0, :delimiter => '.') %> đ
+            </p>
+            <p class="text-center"><button class="btn btn-primary">Xem thông tin</button></p>
           </div>
           <div class="ribbon sale">
             <div class="theribbon">NEW</div>

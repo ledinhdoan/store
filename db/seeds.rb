@@ -3,12 +3,6 @@ Category.destroy_all
 Category.create! name: "Nam"
 Category.create! name: "Nữ"
 
-puts "Count View ..."
-CountView.destroy_all
-CountView.create! number_view: 1111
-
-User.create! email: "ledinhdoan.0083@gmail.com", password: "doan1221"
-
 puts "Create Products..."
 Product.destroy_all
 Product.create! name: "Charme Iris", the_tich: "50", category_id: 1, nong_do: "Eau De Parfum (EDP)",
