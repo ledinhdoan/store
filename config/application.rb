@@ -12,7 +12,7 @@ module Store
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.autoload_paths << Rails.root.join("lib")
-    config.active_job.queue_adapter = :delayed_job
+    # config.active_job.queue_adapter = :delayed_job
     config.after_initialize do
       # call block between initialize and after_initialize
       Dir[Rails.root.join("lib/**/*.rb")].each do |f|
