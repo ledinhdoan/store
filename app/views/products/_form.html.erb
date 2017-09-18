@@ -3,7 +3,7 @@
   <label><%= t("product.ten_sp") %></label></br>
   <%= f.text_field :name, placeholder: t("product.ten_sp"), maxlength: 100, class: "form-control" %><br/>
   <label><%= t("product.loai") %></label></br>
-  <%= f.select :category_id, options_for_select(Category.all.map{|cate| [cate.name, cate.id]}) %><br/>
+  <%= f.select :category_id, options_for_select(Category.all.map{|cate| [cate.name, cate.id]}, selected: @product.category_id) %><br/>
   <label><%= t("product.chi_tiet") %></label></br>
   <%= f.text_area :details, placeholder: t("product.chi_tiet"), maxlength: 100, class: "form-control" %><br/>
   <label><%= t("product.the_tich") %></label></br>
@@ -25,7 +25,8 @@
   <label><%= t("product.gia") %></label></br>
   <%= f.number_field :cost, placeholder: 100, class: "form-control"%><br/>
   <label><%= t("product.hinh_anh") %></label></br>
-  <%= f.file_field :image, id: "file-upload"%>
+  <%= f.file_field :image, id: "file-upload" %>
+  <%= image_tag(@product.image, size: "50x50") %></br>
   <label><%= t("product.save") %></label></br>
   <%= f.submit "Save" %>
 <% end %>
