@@ -15,7 +15,7 @@
           <div class="col-sm-12">
             <div class="box">
               <h2 class="text-left">Nước hoa <%= @product.name %> <%= @product.the_tich %> ml</h2>
-              <h3><%= @product.cost %>đ</h3>
+              <h3>Giá: <%= number_with_precision(@product.cost, :precision => 0, :delimiter => '.') %> đ</h3>
               <label>Danh mục: Nước hoa Charme <%= @product.category.name %></label></p>
               <label>Thể Tích: <%= @product.the_tich %> ml</label></p>
               <label>Loại: Nước hoa <%= @product.category.name %></label></p>
@@ -108,7 +108,7 @@
               <%= link_to product_path(product) do %>
                 <div class="row">
                   <%= image_tag(product.image, class: "image-noi-bat") %>Nước hoa
-                  <%= product.name %> <%= product.cost %>đ
+                  <%= product.name %> <%= number_with_precision(product.cost, :precision => 0, :delimiter => '.') %>đ
                 </div>
               <% end %>
               <hr></hr>
