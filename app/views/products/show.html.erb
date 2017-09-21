@@ -5,7 +5,7 @@
         <div class="row" id="productMain">
           <div class="col-sm-12">
             <div id="mainImage">
-              <%= image_tag @product.image, class: "img-responsive" %>
+              <%= image_tag @product.image.url, class: "img-responsive" %>
             </div>
             <div class="ribbon sale">
               <div class="theribbon">NEW</div>
@@ -107,7 +107,7 @@
             <% Product.all.limit(4).each do |product| %>
               <%= link_to product_path(product) do %>
                 <div class="row">
-                  <%= image_tag(product.image, class: "image-noi-bat") %>Nước hoa
+                  <%= image_tag(product.image.url, class: "image-noi-bat") %>Nước hoa
                   <%= product.name %> <%= number_with_precision(product.cost, :precision => 0, :delimiter => '.') %>đ
                 </div>
               <% end %>
