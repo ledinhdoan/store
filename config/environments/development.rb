@@ -12,6 +12,9 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  config.gem 'carrierwave', :version => '~> 0.4.10'
+  config.gem "cloudinary"
+
   # Show full error reports.
   config.consider_all_requests_local = true
 

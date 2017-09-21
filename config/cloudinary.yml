@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: doanstore
+  api_key: '528676414375769'
+  api_secret: S4TCsjfFNWS3pt-hxcfTLjEQwow
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: doanstore
+  api_key: '528676414375769'
+  api_secret: S4TCsjfFNWS3pt-hxcfTLjEQwow
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: doanstore
+  api_key: '528676414375769'
+  api_secret: S4TCsjfFNWS3pt-hxcfTLjEQwow
+  enhance_image_tag: true
+  static_image_support: false
