@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170912090747) do
+ActiveRecord::Schema.define(version: 20171006081638) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "name",       limit: 65535
@@ -24,30 +24,27 @@ ActiveRecord::Schema.define(version: 20170912090747) do
     t.datetime "updated_at",              null: false
   end
 
-  create_table "impressions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "impressionable_type"
-    t.integer  "impressionable_id"
+  create_table "order_details", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "quantity"
+    t.float    "price",      limit: 24
+    t.integer  "status"
+    t.string   "note"
+    t.integer  "product_id"
+    t.integer  "order_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["order_id"], name: "index_order_details_on_order_id", using: :btree
+    t.index ["product_id"], name: "index_order_details_on_product_id", using: :btree
+  end
+
+  create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "status"
+    t.string   "note"
+    t.float    "total",      limit: 24
     t.integer  "user_id"
-    t.string   "controller_name"
-    t.string   "action_name"
-    t.string   "view_name"
-    t.string   "request_hash"
-    t.string   "ip_address"
-    t.string   "session_hash"
-    t.text     "message",             limit: 65535
-    t.text     "referrer",            limit: 65535
-    t.text     "params",              limit: 65535
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.index ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index", using: :btree
-    t.index ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index", using: :btree
-    t.index ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index", using: :btree
-    t.index ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index", using: :btree
-    t.index ["impressionable_type", "impressionable_id", "params"], name: "poly_params_request_index", length: { params: 255 }, using: :btree
-    t.index ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index", using: :btree
-    t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index", using: :btree
-    t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index", length: { message: 255 }, using: :btree
-    t.index ["user_id"], name: "index_impressions_on_user_id", using: :btree
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -87,5 +84,8 @@ ActiveRecord::Schema.define(version: 20170912090747) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "order_details", "orders"
+  add_foreign_key "order_details", "products"
+  add_foreign_key "orders", "users"
   add_foreign_key "products", "users"
 end
